@@ -1,9 +1,9 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Optional
+from typing import Any, Dict, List, Optional
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, Json
 from .enums import SessionStatus
 
 
@@ -16,7 +16,6 @@ class SessionCreate(SessionBase):
     actual_tools: Optional[List[str]] = None  # temporary solution, will be removed later
 
 
-
 class SessionUpdate(BaseModel):
     photo: Optional[str] = None
 
@@ -27,7 +26,7 @@ class SessionOut(SessionBase):
     updated_at: datetime
     status: SessionStatus = Field(default=SessionStatus.pending_photo_upload)
     actual_tools: Optional[List[str]] = None
-    detected_tools: Optional[List[str]] = None
+    detected_tools: Optional[List[Dict[str, Any]]] = None
     photo: Optional[str] = None
     photo_uploaded_at: Optional[datetime] = None
     sent_to_ml_at: Optional[datetime] = None
@@ -42,5 +41,4 @@ class OrderOut(BaseModel):
     created_at: datetime
     actual_tools: Optional[List[str]] = None
     status: str
-
 

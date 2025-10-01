@@ -124,6 +124,3 @@ async def list_orders(employee_id: str):
             )
         )
     return items
-
-
-
