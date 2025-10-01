@@ -1,0 +1,10 @@
+--index-url https://download.pytorch.org/whl/cu126
+--extra-index-url https://pypi.org/simple
+torch
+torchvision
+torchaudio
+fastapi
+uvicorn[standard]
+pillow
+numpy
+ultralytics
