@@ -11,21 +11,26 @@ services:
     volumes:
       - db-data:/var/lib/postgresql/data
 
-  app:
-    build: .
+  backend:
+    build: ./Backend
     environment:
       DATABASE_URL: postgresql+psycopg2://app:app@db:5432/app
       ORDERS_SERVICE_URL: mock
       ML_SERVICE_URL: mock
-      ENV_FILE: /app/.env
+      ENV_FILE: /backend/app/.env
     ports:
       - "8000:8000"
     depends_on:
       - db
     volumes:
-      - .:/app
+      - .:/backend/app
+
+  yolo:
+    build: ./ML
+    ports:
+      - "8001:8000"
+    volumes:
+      - .:/ML
 
 volumes:
   db-data:
-
-
