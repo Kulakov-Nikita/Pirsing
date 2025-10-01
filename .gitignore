@@ -205,3 +205,13 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Local DB
+.DS_Store
+app.db
+
+# Local storage
+uploads/
+
+# Pyenv
+.python-version

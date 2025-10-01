@@ -2,6 +2,8 @@
 
 ### Setup
 
+Prerequisite: Python 3.12
+
 1. Create and activate a virtualenv:
 
 ```bash
@@ -56,6 +58,18 @@ alembic downgrade -1
 ```
 
 Alembic reads the DB URL from `DATABASE_URL` or falls back to `sqlite:///./app.db`.
+
+### Docker
+
+Run with Postgres using docker-compose:
+
+```bash
+docker compose up --build
+```
+
+The app will be available at `http://localhost:8000` and Postgres at `localhost:5432`.
+
+Compose config sets `DATABASE_URL` to `postgresql+psycopg2://app:app@db:5432/app`.
 
 ### External orders client
 
