@@ -1,4 +1,4 @@
---index-url https://download.pytorch.org/whl/cu126
+--index-url https://download.pytorch.org/whl/cpu
 --extra-index-url https://pypi.org/simple
 torch
 torchvision
@@ -8,3 +8,4 @@ uvicorn[standard]
 pillow
 numpy
 ultralytics
+python-multipart
