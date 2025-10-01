@@ -92,7 +92,7 @@ async def upload_photo(
     # Process with ML service
     try:
         ml_response = await process_photo_with_ml(photo_content, photo.filename or "photo.jpg")
-        detected_tools = ml_response.get("detected_tools", [])
+        detected_tools = ml_response.get("bboxes", [])
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"ML processing failed: {str(e)}")
     

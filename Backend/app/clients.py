@@ -84,7 +84,7 @@ async def fetch_orders_by_employee(employee_id: str) -> List[Dict[str, Any]]:
 
 def _mock_ml_response() -> Dict[str, Any]:
     return {
-        "detected_tools": [ 
+        "bboxes": [ 
             {
                 "x1": 120.5,
                 "y1": 85.2,
