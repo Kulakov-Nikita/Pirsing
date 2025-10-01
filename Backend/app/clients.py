@@ -16,24 +16,52 @@ def _mock_orders_response() -> List[Dict[str, Any]]:
     return [
         {
             "order_id": "ORD-1001",
-            "employee_id": "E12345",
+            "employee_id": "E00001",
             "created_at": (now - timedelta(hours=4)).isoformat() + "Z",
             "actual_tools": ["hammer", "wrench"],
-            "status": "processed",
+            "status": "requested", # requested, in_progress, finished
         },
         {
             "order_id": "ORD-1002",
-            "employee_id": "E12345",
+            "employee_id": "E00001",
             "created_at": (now - timedelta(hours=2)).isoformat() + "Z",
             "actual_tools": ["screwdriver"],
-            "status": "sent_to_ml",
+            "status": "requested",
+        },
+        {
+            "order_id": "ORD-1003",
+            "employee_id": "E00001",
+            "created_at": (now - timedelta(hours=2)).isoformat() + "Z",
+            "actual_tools": ["screwdriver"],
+            "status": "in_progress",
+        },
+        {
+            "order_id": "ORD-1004",
+            "employee_id": "E00001",
+            "created_at": (now - timedelta(hours=2)).isoformat() + "Z",
+            "actual_tools": ["screwdriver"],
+            "status": "in_progress",
+        },
+        {
+            "order_id": "ORD-1005",
+            "employee_id": "E00001",
+            "created_at": (now - timedelta(hours=2)).isoformat() + "Z",
+            "actual_tools": ["screwdriver"],
+            "status": "finished",
         },
         {
             "order_id": "ORD-2001",
             "employee_id": "E77777",
             "created_at": (now - timedelta(days=1)).isoformat() + "Z",
             "actual_tools": [],
-            "status": "photo_uploaded",
+            "status": "finished",
+        },
+        {
+            "order_id": "ORD-2002",
+            "employee_id": "E77777",
+            "created_at": (now - timedelta(days=1)).isoformat() + "Z",
+            "actual_tools": [],
+            "status": "requested",
         },
     ]
 
@@ -56,8 +84,11 @@ async def fetch_orders_by_employee(employee_id: str) -> List[Dict[str, Any]]:
 
 def _mock_ml_response() -> Dict[str, Any]:
     return {
-        "detected_tools": [
-            {"name": "hammer", "confidence": 0.95},
+        "detected_tools": [ 
+            {
+                "name": "hammer", 
+                "confidence": 0.95
+            },
             {"name": "screwdriver", "confidence": 0.87},
             {"name": "wrench", "confidence": 0.92}
         ],
