@@ -19,6 +19,7 @@ def _mock_orders_response() -> List[Dict[str, Any]]:
             "employee_id": "E00001",
             "created_at": (now - timedelta(hours=4)).isoformat() + "Z",
             "actual_tools": ["Отвертка Плоская", "Бокорезы"],
+            "toolset_name": "Облегченный набор",
             "status": "requested", # requested, in_progress, finished
         },
         {
@@ -26,6 +27,7 @@ def _mock_orders_response() -> List[Dict[str, Any]]:
             "employee_id": "E00001",
             "created_at": (now - timedelta(hours=2)).isoformat() + "Z",
             "actual_tools": ["Отвертка Крестовая"],
+            "toolset_name": "Облегченный набор",
             "status": "requested",
         },
         {
@@ -33,6 +35,7 @@ def _mock_orders_response() -> List[Dict[str, Any]]:
             "employee_id": "E00001",
             "created_at": (now - timedelta(hours=2)).isoformat() + "Z",
             "actual_tools": ["Бокорезы"],
+            "toolset_name": "Облегченный набор",
             "status": "in_progress",
         },
         {
@@ -40,6 +43,7 @@ def _mock_orders_response() -> List[Dict[str, Any]]:
             "employee_id": "E00001",
             "created_at": (now - timedelta(hours=2)).isoformat() + "Z",
             "actual_tools": ["Коловорот"],
+            "toolset_name": "Облегченный набор",
             "status": "in_progress",
         },
         {
@@ -47,6 +51,7 @@ def _mock_orders_response() -> List[Dict[str, Any]]:
             "employee_id": "E00001",
             "created_at": (now - timedelta(hours=2)).isoformat() + "Z",
             "actual_tools": ["Коловорот"],
+            "toolset_name": "Облегченный набор",
             "status": "finished",
         },
         {
@@ -54,6 +59,7 @@ def _mock_orders_response() -> List[Dict[str, Any]]:
             "employee_id": "E77777",
             "created_at": (now - timedelta(days=1)).isoformat() + "Z",
             "actual_tools": ["Коловорот", "Разводной ключ"],
+            "toolset_name": "Облегченный набор",
             "status": "finished",
         },
         {
@@ -61,6 +67,7 @@ def _mock_orders_response() -> List[Dict[str, Any]]:
             "employee_id": "E77777",
             "created_at": (now - timedelta(days=1)).isoformat() + "Z",
             "actual_tools": ["Коловорот", "Разводной ключ"],
+            "toolset_name": "Облегченный набор",
             "status": "requested",
         },
     ]
