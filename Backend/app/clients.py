@@ -18,49 +18,49 @@ def _mock_orders_response() -> List[Dict[str, Any]]:
             "order_id": "ORD-1001",
             "employee_id": "E00001",
             "created_at": (now - timedelta(hours=4)).isoformat() + "Z",
-            "actual_tools": ["hammer", "wrench"],
+            "actual_tools": ["Отвертка Плоская", "Бокорезы"],
             "status": "requested", # requested, in_progress, finished
         },
         {
             "order_id": "ORD-1002",
             "employee_id": "E00001",
             "created_at": (now - timedelta(hours=2)).isoformat() + "Z",
-            "actual_tools": ["screwdriver"],
+            "actual_tools": ["Отвертка Крестовая"],
             "status": "requested",
         },
         {
             "order_id": "ORD-1003",
             "employee_id": "E00001",
             "created_at": (now - timedelta(hours=2)).isoformat() + "Z",
-            "actual_tools": ["screwdriver"],
+            "actual_tools": ["Бокорезы"],
             "status": "in_progress",
         },
         {
             "order_id": "ORD-1004",
             "employee_id": "E00001",
             "created_at": (now - timedelta(hours=2)).isoformat() + "Z",
-            "actual_tools": ["screwdriver"],
+            "actual_tools": ["Коловорот"],
             "status": "in_progress",
         },
         {
             "order_id": "ORD-1005",
             "employee_id": "E00001",
             "created_at": (now - timedelta(hours=2)).isoformat() + "Z",
-            "actual_tools": ["screwdriver"],
+            "actual_tools": ["Коловорот"],
             "status": "finished",
         },
         {
             "order_id": "ORD-2001",
             "employee_id": "E77777",
             "created_at": (now - timedelta(days=1)).isoformat() + "Z",
-            "actual_tools": [],
+            "actual_tools": ["Коловорот", "Разводной ключ"],
             "status": "finished",
         },
         {
             "order_id": "ORD-2002",
             "employee_id": "E77777",
             "created_at": (now - timedelta(days=1)).isoformat() + "Z",
-            "actual_tools": [],
+            "actual_tools": ["Коловорот", "Разводной ключ"],
             "status": "requested",
         },
     ]
@@ -86,13 +86,51 @@ def _mock_ml_response() -> Dict[str, Any]:
     return {
         "detected_tools": [ 
             {
-                "name": "hammer", 
-                "confidence": 0.95
+                "x1": 120.5,
+                "y1": 85.2,
+                "x2": 245.8,
+                "y2": 198.3,
+                "confidence": 0.89,
+                "class_id": 1,
+                "class_name": "Отвертка Плоская"
             },
-            {"name": "screwdriver", "confidence": 0.87},
-            {"name": "wrench", "confidence": 0.92}
-        ],
-        "processing_time": 1.2
+            {
+                "x1": 45.1,
+                "y1": 156.7,
+                "x2": 89.4,
+                "y2": 203.9,
+                "confidence": 0.76,
+                "class_id": 2,
+                "class_name": "Отвертка Крестовая"
+            },
+            {
+                "x1": 300.2,
+                "y1": 45.8,
+                "x2": 456.7,
+                "y2": 189.1,
+                "confidence": 0.92,
+                "class_id": 11,
+                "class_name": "Бокорезы"
+            },
+            {
+                "x1": 78.3,
+                "y1": 234.5,
+                "x2": 134.6,
+                "y2": 287.2,
+                "confidence": 0.68,
+                "class_id": 4,
+                "class_name": "Коловорот"
+            },
+            {
+                "x1": 200.9,
+                "y1": 145.3,
+                "x2": 267.4,
+                "y2": 201.8,
+                "confidence": 0.84,
+                "class_id": 8,
+                "class_name": "Разводной ключ"
+            }
+        ]
     }
 
 
