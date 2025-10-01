@@ -16,8 +16,17 @@ class SessionCreate(SessionBase):
     actual_tools: Optional[List[str]] = None  # temporary solution, will be removed later
 
 
-class SessionUpdate(BaseModel):
+class SessionPhotoUpload(BaseModel):
     photo: Optional[str] = None
+
+
+class SessionUpdate(BaseModel):
+    status: SessionStatus = Field(default=SessionStatus.pending_photo_upload)
+    detected_tools: Optional[List[Dict[str, Any]]] = None
+    photo: Optional[str] = None
+    photo_uploaded_at: Optional[datetime] = None
+    sent_to_ml_at: Optional[datetime] = None
+    processed_at: Optional[datetime] = None
 
 
 class SessionOut(SessionBase):
