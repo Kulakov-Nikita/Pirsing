@@ -20,6 +20,30 @@ Hosted: http://pirsiing.duckdns.org/
                        └─────────────────┘
 ```
 
+### Диаграмма последовательностей
+![UML Diagram](docs/image%20(12).png)
+*Последовательность действий и их взаимодействия с сервисами*
+
+### Use-cases
+![Use-cases](docs/image%20(13).png)
+*Возможные разветвления логики*
+
+### Классовая диаграмма
+![Classes](docs/image%20(14).png)
+*Database structure and relationships*
+
+### Классовая диаграмма
+![ML Pipeline](docs/image%20(15).png)
+*Machine learning processing pipeline*
+
+### Диаграмма развертывания
+![API Integration](docs/image%20(16).png)
+*API communication patterns between services*
+
+### Диаграмма активности
+![Deployment Architecture](docs/image%20(17).png)
+*Production deployment and scaling architecture*
+
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -107,6 +131,8 @@ Pirsing/
 ```
 
 ## 🔧 Services Overview
+
+
 
 ### Backend Service (FastAPI)
 - **Port**: 8000
@@ -291,17 +317,17 @@ CREATE TABLE sessions (
 
 ### Supported Tools
 The YOLOv8 model is trained to detect the following tools:
-- Отвертка - (Flat screwdriver)
-- Отвертка + (Phillips screwdriver)
-- Отвертка на смещенный крест (Offset cross screwdriver)
-- Ключ рожковыйнакидной (Box wrench)
-- Бокорезы (Side cutters)
-- Коловорот (Hand drill)
-- Пассатижи (Pliers)
-- Пассатижи контровочные (Locking pliers)
-- Шэрница (Wire strippers)
-- Разводной ключ (Adjustable wrench)
-- Открывашка для банок с маслом (Oil can opener)
+- Отвертка - 
+- Отвертка + 
+- Отвертка на смещенный крест 
+- Ключ рожковыйнакидной 
+- Бокорезы 
+- Коловорот 
+- Пассатижи 
+- Пассатижи контровочные 
+- Шэрница
+- Разводной ключ
+- Открывашка для банок с маслом
 
 ### Model Performance
 - **Input Size**: 640x640 pixels
@@ -332,18 +358,6 @@ The YOLOv8 model is trained to detect the following tools:
 
 ## 🧪 Testing
 
-### Backend Testing
-```bash
-cd Backend
-pytest tests/
-```
-
-### Frontend Testing
-```bash
-cd Frontend
-npm test
-```
-
 ### ML Service Testing
 ```bash
 # Test with sample image
@@ -372,69 +386,11 @@ curl -X POST "http://localhost:8001/analyze" -F "file=@test_image.jpg"
 
 ## 🔍 Monitoring and Logging
 
-### Health Checks
-- Backend: `GET /health`
-- ML Service: `GET /health`
-- Database: Connection monitoring
-
 ### Logging
 - Application logs: Container stdout
 - Database logs: PostgreSQL logs
 - ML processing logs: YOLO inference logs
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests
-5. Submit a pull request
-
 ## 📄 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🆘 Troubleshooting
-
-### Common Issues
-
-1. **Database Connection Issues**
-   ```bash
-   # Check if PostgreSQL is running
-   docker-compose ps
-   # Check database logs
-   docker-compose logs db
-   ```
-
-2. **ML Service Not Responding**
-   ```bash
-   # Check ML service logs
-   docker-compose logs yolo
-   # Verify model file exists
-   ls -la ML/best.pt
-   ```
-
-3. **Frontend Build Issues**
-   ```bash
-   # Clear node modules and reinstall
-   cd Frontend
-   rm -rf node_modules package-lock.json
-   npm install
-   ```
-
-### Performance Optimization
-
-1. **ML Service**: Use GPU acceleration for faster inference
-2. **Database**: Add indexes for frequently queried columns
-3. **Frontend**: Implement image compression before upload
-
-## 📞 Support
-
-For support and questions:
-- Create an issue in the repository
-- Check the troubleshooting section
-- Review the API documentation
-
----
-
-**Pirsing** - Intelligent tool recognition for the modern workplace.
