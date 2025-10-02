@@ -1,10 +1,10 @@
-# Pirsing - AI-Powered Tool Recognition System
+# Pirsing - Система распознавания инструментов на основе ИИ
 
-A comprehensive system for recognizing and managing tools using computer vision and machine learning. The project consists of a React frontend, FastAPI backend, and YOLOv8-based ML service for tool detection.
+Комплексная система для распознавания и управления инструментами с использованием компьютерного зрения и машинного обучения. Проект состоит из React фронтенда, FastAPI бэкенда и ML-сервиса на основе YOLOv8 для детекции инструментов.
 
-Hosted: http://pirsiing.duckdns.org/
+Размещено: http://pirsiing.duckdns.org/
 
-## 🏗️ Architecture
+## 🏗️ Архитектура
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
@@ -30,241 +30,240 @@ Hosted: http://pirsiing.duckdns.org/
 
 ### Классовая диаграмма
 ![Classes](docs/image%20(14).png)
-*Database structure and relationships*
+*Структура базы данных и связи*
 
 ### Классовая диаграмма
 ![ML Pipeline](docs/image%20(15).png)
-*Machine learning processing pipeline*
+*Пайплайн обработки машинного обучения*
 
 ### Диаграмма развертывания
 ![API Integration](docs/image%20(16).png)
-*API communication patterns between services*
+*Паттерны API-коммуникации между сервисами*
 
 ### Диаграмма активности
-![Deployment Architecture](docs/image%20(17).png)
-*Production deployment and scaling architecture*
+![Activity Diagram](docs/image%20(17).png)
 
-## 🚀 Quick Start
+## 🚀 Быстрый старт
 
-### Prerequisites
-- Docker and Docker Compose
-- Node.js 18+ (for local frontend development)
-- Python 3.10+ (for local backend development)
+### Предварительные требования
+- Docker и Docker Compose
+- Node.js 18+ (для локальной разработки фронтенда)
+- Python 3.10+ (для локальной разработки бэкенда)
 
-### Running with Docker Compose
+### Запуск с Docker Compose
 
-1. **Clone the repository**
+1. **Клонируйте репозиторий**
    ```bash
    git clone <repository-url>
    cd Pirsing
    ```
 
-2. **Start all services**
+2. **Запустите все сервисы**
    ```bash
    docker-compose up --build
    ```
 
-3. **Access the application**
+3. **Доступ к приложению**
    - Frontend: http://localhost:80
    - Backend API: http://localhost:8000
    - ML Service: http://localhost:8001
    - API Documentation: http://localhost:8000/docs
 
-### How to Test
-1. Go to http://pirsiing.duckdns.org/ or in case of local setup to http://localhost/.
+### Как тестировать
+1. Перейдите на http://pirsiing.duckdns.org/ или в случае локальной настройки на http://localhost/.
 
-2. Follow the instructions in interface. **For test, you can use E00001 as employee's TOIR number**.
+2. Следуйте инструкциям в интерфейсе. **Для тестирования можно использовать E00001 как номер ТОИР сотрудника**.
 
-#### Step-by-Step Visual Guide
+#### Пошаговое визуальное руководство
 
-**Step 1: Application Homepage**
+**Шаг 1: Главная страница приложения**
 ![Application Homepage](docs/photo_2025-10-02%2021.06.12.jpeg)
-*Initial application interface showing the main entry point*
+*Начальный интерфейс приложения, показывающий главную точку входа*
 
-**Step 2: Employee ID Input**
+**Шаг 2: Ввод ID сотрудника**
 ![Employee ID Input](docs/photo_2025-10-02%2021.06.15.jpeg)
-*Enter employee ID (use E00001 for testing)*
+*Введите ID сотрудника (используйте E00001 для тестирования)*
 
-**Step 3: Order Type Selection**
+**Шаг 3: Выбор типа заказа**
 ![Order Selection](docs/photo_2025-10-02%2021.06.19.jpeg)
-*Select an type of order from the available list: get or return instruments.*
+*Выберите тип заказа из доступного списка: получение или возврат инструментов*
 
-**Step 4: Order Selection**
+**Шаг 4: Выбор заказа**
 ![Order Selection](docs/photo_2025-10-02%2021.06.22.jpeg)
-*Select an order from the available list*
+*Выберите заказ из доступного списка*
 
-**Step 5: Photo Capture Interface**
+**Шаг 5: Интерфейс захвата фото**
 ![Photo Capture](docs/photo_2025-10-02%2021.06.26.jpeg)
-*Camera interface for capturing tool photos*
+*Интерфейс камеры для захвата фотографий инструментов*
 
-**Step 6: Tool Recognition Results**
+**Шаг 6: Результаты распознавания инструментов**
 ![Recognition Results](docs/photo_2025-10-02%2021.06.29.jpeg)
-*AI-powered tool detection and recognition results*
+*Результаты детекции и распознавания инструментов на основе ИИ*
 
 
-## 📁 Project Structure
+## 📁 Структура проекта
 
 ```
 Pirsing/
 ├── Backend/                 # FastAPI backend service
 │   ├── app/
-│   │   ├── models.py        # Database models
+│   │   ├── models.py        # Модели базы данных
 │   │   ├── routers.py       # API endpoints
-│   │   ├── schemas.py       # Pydantic schemas
-│   │   ├── clients.py       # External service clients
-│   │   └── database.py      # Database configuration
-│   ├── alembic/             # Database migrations
-│   ├── main.py             # FastAPI application
-│   └── requirements.txt    # Python dependencies
+│   │   ├── schemas.py       # Pydantic схемы
+│   │   ├── clients.py       # Клиенты внешних сервисов
+│   │   └── database.py      # Конфигурация базы данных
+│   ├── alembic/             # Миграции базы данных
+│   ├── main.py             # FastAPI приложение
+│   └── requirements.txt    # Python зависимости
 ├── Frontend/                # React frontend
 │   ├── src/
-│   │   ├── view/           # React components
-│   │   ├── utils.ts        # API utilities
-│   │   └── App.tsx         # Main application
-│   ├── package.json        # Node.js dependencies
-│   └── Dockerfile          # Frontend container
+│   │   ├── view/           # React компоненты
+│   │   ├── utils.ts        # API утилиты
+│   │   └── App.tsx         # Главное приложение
+│   ├── package.json        # Node.js зависимости
+│   └── Dockerfile          # Frontend контейнер
 ├── ML/                      # YOLOv8 ML service
 │   ├── app.py              # FastAPI ML service
-│   ├── best.pt             # Trained YOLO model
-│   └── requirements.txt    # ML dependencies
-└── docker-compose.yml      # Multi-service orchestration
+│   ├── best.pt             # Обученная YOLO модель
+│   └── requirements.txt    # ML зависимости
+└── docker-compose.yml      # Оркестрация мульти-сервисов
 ```
 
-## 🔧 Services Overview
+## 🔧 Обзор сервисов
 
 
 
 ### Backend Service (FastAPI)
-- **Port**: 8000
-- **Database**: PostgreSQL with SQLAlchemy ORM
-- **Features**:
-  - Session management
-  - Photo upload and processing
-  - Order management
-  - ML service integration
-  - Database migrations with Alembic
+- **Порт**: 8000
+- **База данных**: PostgreSQL с SQLAlchemy ORM
+- **Функции**:
+  - Управление сессиями
+  - Загрузка и обработка фотографий
+  - Управление заказами
+  - Интеграция с ML сервисом
+  - Миграции базы данных с Alembic
 
-**Key Endpoints**:
-- `GET /sessions/` - List all sessions
-- `POST /sessions/` - Create new session
-- `POST /sessions/{id}/upload-photo` - Upload photo for analysis
-- `GET /orders/` - Get orders by employee ID
+**Ключевые Endpoints**:
+- `GET /sessions/` - Список всех сессий
+- `POST /sessions/` - Создание новой сессии
+- `POST /sessions/{id}/upload-photo` - Загрузка фото для анализа
+- `GET /orders/` - Получение заказов по ID сотрудника
 
 ### ML Service (YOLOv8)
-- **Port**: 8001
-- **Model**: Custom YOLOv8 trained on tool dataset
-- **Features**:
-  - Real-time tool detection
-  - Confidence scoring
-  - Bounding box coordinates
-  - Tool classification
+- **Порт**: 8001
+- **Модель**: Кастомная YOLOv8, обученная на датасете инструментов
+- **Функции**:
+  - Детекция инструментов в реальном времени
+  - Оценка уверенности
+  - Координаты ограничивающих рамок
+  - Классификация инструментов
 
-**Key Endpoints**:
-- `POST /analyze` - Analyze uploaded photo for tools
+**Ключевые Endpoints**:
+- `POST /analyze` - Анализ загруженного фото на предмет инструментов
 
 ### Frontend Service (React)
-- **Port**: 80
-- **Features**:
-  - Photo capture (camera/gallery)
-  - Real-time tool recognition
-  - Session management
-  - Order tracking
+- **Порт**: 80
+- **Функции**:
+  - Захват фото (камера/галерея)
+  - Распознавание инструментов в реальном времени
+  - Управление сессиями
+  - Отслеживание заказов
 
-## 🛠️ Development Setup
+## 🛠️ Настройка разработки
 
-### Backend Development
+### Разработка Backend
 
-1. **Navigate to backend directory**
+1. **Перейдите в директорию backend**
    ```bash
    cd Backend
    ```
 
-2. **Create virtual environment**
+2. **Создайте виртуальное окружение**
    ```bash
    python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   source venv/bin/activate  # На Windows: venv\Scripts\activate
    ```
 
-3. **Install dependencies**
+3. **Установите зависимости**
    ```bash
    pip install -r requirements.txt
    ```
 
-4. **Set up database**
+4. **Настройте базу данных**
    ```bash
-   # For PostgreSQL (recommended)
+   # Для PostgreSQL (рекомендуется)
    export DATABASE_URL="postgresql+psycopg2://app:app@localhost:5432/app"
    
-   # For SQLite (development)
+   # Для SQLite (разработка)
    export DATABASE_URL="sqlite:///./app.db"
    ```
 
-5. **Run migrations**
+5. **Запустите миграции**
    ```bash
    alembic upgrade head
    ```
 
-6. **Start the server**
+6. **Запустите сервер**
    ```bash
    uvicorn main:app --reload
    ```
 
-### Frontend Development
+### Разработка Frontend
 
-1. **Navigate to frontend directory**
+1. **Перейдите в директорию frontend**
    ```bash
    cd Frontend
    ```
 
-2. **Install dependencies**
+2. **Установите зависимости**
    ```bash
    npm install
    ```
 
-3. **Start development server**
+3. **Запустите сервер разработки**
    ```bash
    npm start
    ```
 
-### ML Service Development
+### Разработка ML Service
 
-1. **Navigate to ML directory**
+1. **Перейдите в директорию ML**
    ```bash
    cd ML
    ```
 
-2. **Create virtual environment**
+2. **Создайте виртуальное окружение**
    ```bash
    python -m venv venv
    source venv/bin/activate
    ```
 
-3. **Install dependencies**
+3. **Установите зависимости**
    ```bash
    pip install -r requirements.txt
    ```
 
-4. **Start the service**
+4. **Запустите сервис**
    ```bash
    uvicorn app:app --reload --port 8001
    ```
 
-## 🔄 API Integration
+## 🔄 API Интеграция
 
 ### Backend ↔ ML Service
-The backend communicates with the ML service for photo analysis:
+Бэкенд взаимодействует с ML сервисом для анализа фотографий:
 
 ```python
-# Backend sends photo to ML service
+# Backend отправляет фото в ML сервис
 ml_response = await process_photo_with_ml(photo_content, filename)
 detected_tools = ml_response.get("bboxes", [])
 ```
 
 ### Frontend ↔ Backend
-The frontend communicates with the backend for session management:
+Фронтенд взаимодействует с бэкендом для управления сессиями:
 
 ```typescript
-// Frontend creates session
+// Frontend создает сессию
 const response = await fetch(`${domain}/sessions/`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -276,9 +275,9 @@ const response = await fetch(`${domain}/sessions/`, {
 });
 ```
 
-## 🗄️ Database Schema
+## 🗄️ Схема базы данных
 
-### Sessions Table
+### Таблица Sessions
 ```sql
 CREATE TABLE sessions (
     id SERIAL PRIMARY KEY,
@@ -296,27 +295,27 @@ CREATE TABLE sessions (
 );
 ```
 
-## 🔧 Configuration
+## 🔧 Конфигурация
 
-### Environment Variables
+### Переменные окружения
 
 **Backend**:
-- `DATABASE_URL`: Database connection string
-- `ORDERS_SERVICE_URL`: External orders service URL (or "mock")
-- `ML_SERVICE_URL`: ML service URL (default: http://yolo:8001)
+- `DATABASE_URL`: Строка подключения к базе данных
+- `ORDERS_SERVICE_URL`: URL внешнего сервиса заказов (или "mock")
+- `ML_SERVICE_URL`: URL ML сервиса (по умолчанию: http://yolo:8001)
 
 **Frontend**:
-- `BACKEND_SERVICE_URL`: Backend API URL
+- `BACKEND_SERVICE_URL`: URL Backend API
 
 **ML Service**:
-- `MODEL_PATH`: Path to YOLO model file (default: "best.pt")
-- `DEFAULT_CONF`: Confidence threshold (default: 0.25)
-- `DEFAULT_IMGSZ`: Image size for processing (default: 640)
+- `MODEL_PATH`: Путь к файлу YOLO модели (по умолчанию: "best.pt")
+- `DEFAULT_CONF`: Порог уверенности (по умолчанию: 0.25)
+- `DEFAULT_IMGSZ`: Размер изображения для обработки (по умолчанию: 640)
 
-## 📊 ML Model Details
+## 📊 Детали ML модели
 
-### Supported Tools
-The YOLOv8 model is trained to detect the following tools:
+### Поддерживаемые инструменты
+Модель YOLOv8 обучена для детекции следующих инструментов:
 - Отвертка - 
 - Отвертка + 
 - Отвертка на смещенный крест 
@@ -329,68 +328,68 @@ The YOLOv8 model is trained to detect the following tools:
 - Разводной ключ
 - Открывашка для банок с маслом
 
-### Model Performance
-- **Input Size**: 640x640 pixels
-- **Confidence Threshold**: 0.25 (configurable)
-- **Detection Format**: Bounding boxes with class names and confidence scores
+### Производительность модели
+- **Размер входа**: 640x640 пикселей
+- **Порог уверенности**: 0.25 (настраивается)
+- **Формат детекции**: Ограничивающие рамки с именами классов и оценками уверенности
 
-## 🚀 Deployment
+## 🚀 Развертывание
 
-### Production Deployment
+### Продакшн развертывание
 
-1. **Update environment variables**
+1. **Обновите переменные окружения**
    ```bash
-   # In docker-compose.yml
+   # В docker-compose.yml
    environment:
      DATABASE_URL: postgresql+psycopg2://user:password@db:5432/production_db
      ML_SERVICE_URL: http://yolo:8001
    ```
 
-2. **Build and deploy**
+2. **Соберите и разверните**
    ```bash
    docker-compose -f docker-compose.prod.yml up -d
    ```
 
-### Scaling
-- **Backend**: Scale horizontally with load balancer
-- **ML Service**: Use GPU-enabled instances for better performance
-- **Database**: Use managed PostgreSQL service for production
+### Масштабирование
+- **Backend**: Масштабирование горизонтально с балансировщиком нагрузки
+- **ML Service**: Используйте GPU-инстансы для лучшей производительности
+- **База данных**: Используйте управляемый PostgreSQL сервис для продакшна
 
-## 🧪 Testing
+## 🧪 Тестирование
 
-### ML Service Testing
+### Тестирование ML Service
 ```bash
-# Test with sample image
+# Тест с примером изображения
 curl -X POST "http://localhost:8001/analyze" -F "file=@test_image.jpg"
 ```
 
-## 📝 API Documentation
+## 📝 API Документация
 
-### Interactive Documentation
+### Интерактивная документация
 - **Swagger UI**: http://localhost:8000/docs
 - **ReDoc**: http://localhost:8000/redoc
 
-### Key API Endpoints
+### Ключевые API Endpoints
 
 #### Sessions
-- `GET /sessions/` - List sessions
-- `POST /sessions/` - Create session
-- `GET /sessions/{id}` - Get session details
-- `POST /sessions/{id}/upload-photo` - Upload photo for analysis
+- `GET /sessions/` - Список сессий
+- `POST /sessions/` - Создание сессии
+- `GET /sessions/{id}` - Получение деталей сессии
+- `POST /sessions/{id}/upload-photo` - Загрузка фото для анализа
 
 #### Orders
-- `GET /orders/?employee_id={id}` - Get orders by employee
+- `GET /orders/?employee_id={id}` - Получение заказов по сотруднику
 
 #### ML Analysis
-- `POST /analyze` - Analyze photo for tool detection
+- `POST /analyze` - Анализ фото для детекции инструментов
 
-## 🔍 Monitoring and Logging
+## 🔍 Мониторинг и логирование
 
-### Logging
-- Application logs: Container stdout
-- Database logs: PostgreSQL logs
-- ML processing logs: YOLO inference logs
+### Логирование
+- Логи приложения: stdout контейнера
+- Логи базы данных: PostgreSQL логи
+- Логи ML обработки: YOLO inference логи
 
-## 📄 License
+## 📄 Лицензия
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+Этот проект лицензирован под лицензией MIT - см. файл LICENSE для деталей.
