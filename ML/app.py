@@ -8,8 +8,27 @@ from PIL import Image
 import numpy as np
 from ultralytics import YOLO
 from starlette.concurrency import run_in_threadpool
+from fastapi.middleware.cors import CORSMiddleware
+
 
 app = FastAPI(title="YOLO detect API")
+# Set all CORS enabled origins
+origins = [
+    # Local
+    "http://localhost",
+    "http://localhost:8080",
+    "http://localhost:8000",
+
+    # Docker
+    "http://backend:8000",
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Загружаем модель при старте (маленькая модель yolov8n)
 # Можно заменить на 'yolov8s.pt' или путь к своей модели

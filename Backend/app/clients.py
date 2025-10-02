@@ -140,7 +140,7 @@ async def process_photo_with_ml(photo_content: bytes, filename: str) -> Dict[str
         return _mock_ml_response()
     
     url = f"{ML_SERVICE_URL}/analyze"
-    files = {"photo": (filename, photo_content, "image/jpeg")}
+    files = {"file": (filename, photo_content, "image/jpeg")}
     
     async with httpx.AsyncClient(timeout=120) as client:
         resp = await client.post(url, files=files)

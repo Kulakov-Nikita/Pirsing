@@ -16,7 +16,7 @@ services:
     environment:
       DATABASE_URL: postgresql+psycopg2://app:app@db:5432/app
       ORDERS_SERVICE_URL: mock
-      ML_SERVICE_URL: mock
+      ML_SERVICE_URL: http://yolo:8001
       ENV_FILE: /backend/app/.env
     ports:
       - "8000:8000"
@@ -28,7 +28,7 @@ services:
   yolo:
     build: ./ML
     ports:
-      - "8001:8000"
+      - "8001:8001"
     volumes:
       - .:/ML
 
