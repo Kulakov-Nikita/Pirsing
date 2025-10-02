@@ -20,9 +20,11 @@ def create_app() -> FastAPI:
         "http://localhost",
         "http://localhost:8080",
         "http://localhost:8001",
+        "http://localhost:80",
 
         # Docker
         "http://yolo:8001",
+        "http://frontend:80",
     ]
     app.add_middleware(
         CORSMiddleware,

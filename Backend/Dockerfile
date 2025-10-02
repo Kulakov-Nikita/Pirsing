@@ -6,7 +6,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 WORKDIR /app
 
-# System deps
+# System de
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     libpq-dev \
