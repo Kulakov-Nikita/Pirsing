@@ -1,4 +1,5 @@
-export const domain: string = 'http://localhost:8000';
+export const domain: string = 'http://pirsiing.duckdns.org';
+
 
 export async function getOrdersByEmployeeId(employeeId: string) {
     try {
