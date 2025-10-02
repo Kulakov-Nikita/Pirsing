@@ -38,7 +38,7 @@ services:
       context: ./Frontend
       dockerfile: Dockerfile
     environment:
-      BACKEND_SERVICE_URL: http://pirsiing.duckdns.org/
+      BACKEND_SERVICE_URL: http://localhost:8000  # for production: http://pirsiing.duckdns.org:8000
     volumes:
       - ./.docker/frontend:/app
       - /Frontend/node_modules

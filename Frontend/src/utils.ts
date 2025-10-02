@@ -1,4 +1,6 @@
-export const domain: string = 'http://pirsiing.duckdns.org:8000';
+// export const domain: string = 'http://pirsiing.duckdns.org:8000';  // for production
+
+export const domain: string = process.env.BACKEND_SERVICE_URL || 'http://localhost:8000';
 
 
 export async function getOrdersByEmployeeId(employeeId: string) {
