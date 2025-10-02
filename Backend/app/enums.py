@@ -8,6 +8,3 @@ class SessionStatus(str, Enum):
     photo_uploaded = "photo_uploaded"
     sent_to_ml = "sent_to_ml"
     processed = "processed"
-
-
-
