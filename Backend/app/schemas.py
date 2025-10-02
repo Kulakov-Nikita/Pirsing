@@ -50,4 +50,5 @@ class OrderOut(BaseModel):
     created_at: datetime
     actual_tools: Optional[List[str]] = None
     status: str
+    toolset_name:str
 

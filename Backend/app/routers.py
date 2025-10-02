@@ -121,6 +121,7 @@ async def list_orders(employee_id: str):
                 created_at=r.get("created_at"),
                 actual_tools=r.get("actual_tools"),
                 status=str(r.get("status")),
+                toolset_name=str(r.get("toolset_name"))
             )
         )
     return items

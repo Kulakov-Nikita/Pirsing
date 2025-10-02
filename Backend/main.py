@@ -1,6 +1,5 @@
-from __future__ import annotations
-
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware   
 
 from app.database import Base, engine
 from app.routers import router as sessions_router
@@ -34,8 +33,4 @@ def create_app() -> FastAPI:
     )
     return app
 
-
 app = create_app()
-
-
-
