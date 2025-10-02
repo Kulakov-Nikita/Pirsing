@@ -1,4 +1,4 @@
-import React, { useState, useRef, useMemo } from 'react';
+import React, { useState, useRef, useMemo, useEffect } from 'react';
 import '../css/Recognize.css';
 import Header from './Common/Header';
 import { BBox } from "./App";
@@ -11,7 +11,7 @@ interface Props {
 }
 
 export default function RecognizeScreen({ photoUrl, bboxes, originalSet, onFinish }: Props) {
-    const [imgSize, setImgSize] = useState<{ width: number; height: number }>({ width: 1, height: 1 });
+    const [imgSize, setImgSize] = useState<{ width: number; height: number }>({ width: 0, height: 0 });
     const imgRef = useRef<HTMLImageElement>(null);
 
     const CONFIDENCE_THRESHOLD = 0.7;
@@ -23,12 +23,21 @@ export default function RecognizeScreen({ photoUrl, bboxes, originalSet, onFinis
         return 'item recognized';
     };
 
-    const handleImageLoad = () => {
+    const updateImgSize = () => {
         if (!imgRef.current) return;
-        setImgSize({ width: imgRef.current.naturalWidth, height: imgRef.current.naturalHeight });
+        setImgSize({ width: imgRef.current.clientWidth, height: imgRef.current.clientHeight });
     };
 
-    // вычисляем статус динамически
+    const handleImageLoad = () => {
+        updateImgSize();
+    };
+
+    // обновляем размер при ресайзе окна
+    useEffect(() => {
+        window.addEventListener('resize', updateImgSize);
+        return () => window.removeEventListener('resize', updateImgSize);
+    }, []);
+
     const status = useMemo(() => {
         for (const name of originalSet) {
             const bbox = bboxes.find(b => b.class_name === name);
@@ -51,38 +60,37 @@ export default function RecognizeScreen({ photoUrl, bboxes, originalSet, onFinis
                             onLoad={handleImageLoad}
                         />
 
-                        {bboxes.map((box, idx) => {
-                            const left = (box.x1 / imgSize.width) * 100;
-                            const top = (box.y1 / imgSize.height) * 100;
-                            const width = ((box.x2 - box.x1) / imgSize.width) * 100;
-                            const height = ((box.y2 - box.y1) / imgSize.height) * 100;
+                        {imgSize.width > 0 && bboxes.map((box, idx) => {
+                            // пересчет координат относительно текущего размера картинки
+                            const left = (box.x1 / imgRef.current!.naturalWidth) * imgSize.width;
+                            const top = (box.y1 / imgRef.current!.naturalHeight) * imgSize.height;
+                            const width = ((box.x2 - box.x1) / imgRef.current!.naturalWidth) * imgSize.width;
+                            const height = ((box.y2 - box.y1) / imgRef.current!.naturalHeight) * imgSize.height;
 
                             return (
                                 <div
                                     key={idx}
                                     style={{
                                         position: 'absolute',
-                                        left: `${left}%`,
-                                        top: `${top}%`,
-                                        width: `${width}%`,
-                                        height: `${height}%`,
+                                        left: `${left}px`,
+                                        top: `${top}px`,
+                                        width: `${width}px`,
+                                        height: `${height}px`,
                                         border: '2px solid red',
                                         pointerEvents: 'none',
                                         boxSizing: 'border-box'
                                     }}
                                 >
-                                    <span
-                                        style={{
-                                            position: 'absolute',
-                                            top: '-20px',
-                                            left: '0',
-                                            background: 'red',
-                                            color: 'white',
-                                            fontSize: '12px',
-                                            padding: '2px 4px',
-                                            borderRadius: '4px'
-                                        }}
-                                    >
+                                    <span style={{
+                                        position:'absolute',
+                                        top:'-20px',
+                                        left:'0',
+                                        background:'red',
+                                        color:'white',
+                                        fontSize:'12px',
+                                        padding:'2px 4px',
+                                        borderRadius:'4px'
+                                    }}>
                                         {box.class_name} ({Math.round(box.confidence * 100)}%)
                                     </span>
                                 </div>
