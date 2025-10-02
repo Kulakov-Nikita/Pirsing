@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 import '../css/Photo.css';
 import Header from './Common/Header';
 import {Order} from "./App";
+import { domain } from '../utils';
 
 interface Props {
     onNext: (photoData: any) => void; // теперь передаем весь объект
@@ -21,7 +22,7 @@ export default function PhotoStep({ onNext, onBack, employeeId, order }: Props) 
 
     const startSession = async () => {
         try {
-            const response = await fetch('http://localhost:8000/sessions/', {
+            const response = await fetch(`${domain}/sessions/`, {
                 method: 'POST',
                 headers: { 'accept': 'application/json', 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -48,7 +49,7 @@ export default function PhotoStep({ onNext, onBack, employeeId, order }: Props) 
             formData.append('photo', file);
             formData.append('session_id', session_id);
 
-            const response = await fetch(`http://localhost:8000/sessions/${session_id}/upload-photo`, {
+            const response = await fetch(`${domain}:8000/sessions/${session_id}/upload-photo`, {
                 method: 'POST',
                 headers: { 'accept': 'application/json' },
                 body: formData
@@ -57,7 +58,7 @@ export default function PhotoStep({ onNext, onBack, employeeId, order }: Props) 
             if (!response.ok) throw new Error('Не удалось загрузить фото');
 
             const data = await response.json(); // сохраняем весь ответ
-            setPhotoUrl(data.photo ? `http://localhost:8000/${data.photo}` : null);
+            setPhotoUrl(data.photo ? `${domain}:8000/${data.photo}` : null);
             return data;
         } catch (err) {
             console.error(err);
