@@ -28,9 +28,26 @@ services:
   yolo:
     build: ./ML
     ports:
-      - "8001:8001"
+        - "8001:8001"
     volumes:
       - .:/ML
+
+
+  frontend:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+    environment:
+      BACKEND_SERVICE_URL: http://backend:8000
+    volumes:
+      - ./.docker/frontend:/app
+      - /Frontend/node_modules
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+
 
 volumes:
   db-data:
