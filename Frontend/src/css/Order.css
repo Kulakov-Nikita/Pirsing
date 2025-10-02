@@ -1,0 +1,139 @@
+/* Контейнер для скролла */
+.table-wrapper {
+    max-height: 400px;      /* фиксированная высота */
+    overflow-y: auto;       /* вертикальная прокрутка */
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+}
+
+/* Таблица */
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.2rem;
+}
+
+/* Ячейки */
+.order-table th,
+.order-table td {
+    padding: 14px 18px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+}
+
+.order-table th {
+    background: rgba(255,255,255,0.15);
+    font-weight: 600;
+}
+
+.order-table tr {
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.order-table tr {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.order-table tr:hover {
+    background: rgba(255,255,255,0.4);
+    transform: translateY(-2px);
+}
+
+.order-table tr:active {
+    background: rgba(255,255,255,0.35);
+    transform: translateY(0);
+}
+
+.order-table td:last-child::after {
+    content: '→';
+    margin-left: 8px;
+    color: rgba(255,255,255,0.6);
+}
+
+/* Контейнер для скролла */
+.table-wrapper {
+    max-height: 400px;      /* фиксированная высота на больших экранах */
+    overflow-y: auto;       /* вертикальная прокрутка */
+    margin: 30px 0;
+}
+
+/* Таблица */
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.2rem;
+}
+
+/* Ячейки */
+.order-table th,
+.order-table td {
+    padding: 14px 18px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+}
+
+.order-table th {
+    background: rgba(255,255,255,0.15);
+    font-weight: 600;
+}
+
+.order-table tr {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.order-table tr:hover {
+    background: rgba(255,255,255,0.4);
+    transform: translateY(-2px);
+}
+
+.order-table tr:active {
+    background: rgba(255,255,255,0.35);
+    transform: translateY(0);
+}
+
+.order-table td:last-child::after {
+    content: '→';
+    margin-left: 8px;
+    color: rgba(255,255,255,0.6);
+}
+
+/* --- Медиазапросы для адаптивности --- */
+
+@media (max-width: 1000px) {
+    .table-wrapper {
+        max-height: 300px;
+    }
+
+    .order-table th,
+    .order-table td {
+        padding: 10px 12px;
+        font-size: 1rem;
+    }
+
+    .order-table td:last-child::after {
+        margin-left: 5px;
+    }
+}
+
+/* Мобильные устройства (<=480px) */
+@media (max-width: 480px) {
+    .table-wrapper {
+        max-height: 250px;
+    }
+
+    .order-table th,
+    .order-table td {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+
+    .order-table td:last-child::after {
+        margin-left: 3px;
+    }
+}

@@ -1,0 +1,66 @@
+
+/* Drag & Drop зона */
+.drag-drop-area {
+    border: 2px dashed rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    padding: 30px;
+    cursor: pointer;
+    margin-top: 20px;
+    color: #fff;
+    font-size: 1.2rem;
+    text-align: center;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.drag-drop-area:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Видео / Изображение */
+video, img {
+    width: auto;
+    border-radius: 10px;
+    max-width: 500px;
+
+    margin-bottom: 20px;
+}
+
+/* Скроллбар для длинных видео или изображений, если нужно */
+video::-webkit-scrollbar,
+img::-webkit-scrollbar {
+    width: 8px;
+}
+
+video::-webkit-scrollbar-thumb,
+img::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.3);
+    border-radius: 4px;
+}
+.hidden{
+    display: none;
+}
+
+@media (max-width: 1000px) {
+    .drag-drop-area {
+        padding: 20px;
+        font-size: 1rem;
+    }
+
+    video, img {
+        max-width: 500px;
+    }
+}
+
+@media (max-width: 600px) {
+    .drag-drop-area {
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+
+    video, img {
+        max-height: 200px;
+        max-width: 300px;
+
+    }
+}
