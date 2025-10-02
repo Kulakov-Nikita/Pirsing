@@ -49,7 +49,7 @@ export default function PhotoStep({ onNext, onBack, employeeId, order }: Props) 
             formData.append('photo', file);
             formData.append('session_id', session_id);
 
-            const response = await fetch(`${domain}:8000/sessions/${session_id}/upload-photo`, {
+            const response = await fetch(`${domain}/sessions/${session_id}/upload-photo`, {
                 method: 'POST',
                 headers: { 'accept': 'application/json' },
                 body: formData
@@ -58,7 +58,7 @@ export default function PhotoStep({ onNext, onBack, employeeId, order }: Props) 
             if (!response.ok) throw new Error('Не удалось загрузить фото');
 
             const data = await response.json(); // сохраняем весь ответ
-            setPhotoUrl(data.photo ? `${domain}:8000/${data.photo}` : null);
+            setPhotoUrl(data.photo ? `${domain}/${data.photo}` : null);
             return data;
         } catch (err) {
             console.error(err);
