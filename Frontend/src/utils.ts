@@ -1,4 +1,4 @@
-export const domain: string = 'http://pirsiing.duckdns.org';
+export const domain: string = 'http://pirsiing.duckdns.org:8000';
 
 
 export async function getOrdersByEmployeeId(employeeId: string) {
